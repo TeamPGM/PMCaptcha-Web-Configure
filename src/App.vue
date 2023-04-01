@@ -90,9 +90,7 @@
           </n-card></n-space>
       </n-layout-content>
     </n-space>
-    {{ newconf }}{{ conf }}
   </n-layout>
-  {{ model }}
 </template>
 <script setup>
 import { ref, watch } from 'vue';
