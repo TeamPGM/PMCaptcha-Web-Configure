@@ -9,6 +9,9 @@
         <n-space vertical>
           <n-card style="max-width: 1200px;">
             <n-space vertical>
+              <n-alert title="不受支持的 PMCaptcha 版本" type="error" style="max-width: 1200px;" v-if="wrongversion">
+                支持版本 {{sversion}} 您的版本 {{conf.version}}<br>仍然使用可能造成不可预料的问题
+              </n-alert>
               <n-alert title="无效的配置文件" type="warning" closable style="max-width: 1200px;" v-if="usedefault">
                 将使用默认配置
               </n-alert>
@@ -103,7 +106,8 @@ try {
 } catch (e) {
   usedefault.value = true
 }
-
+const wrongversion = !(conf.value.version == defaults.version)
+const sversion = ref(defaults.version)
 const model = ref({
   "welcome": "",
   "blacklist": "",
@@ -139,7 +143,12 @@ watch(model.value, (nv) => {
     console.log(i in conf.value)
     console.log(conf[i] !== model.value[i])
     if (i in conf.value && conf.value[i] !== model.value[i]) {
-      newconf.value[i] = model.value[i]
+      if (model.value[i] == defaults[i]) {
+        newconf.value[i] = -1
+      } else {
+        newconf.value[i] = model.value[i]
+      }
+
     }
     if (i in conf.value === false && defaults[i] !== model.value[i]) {
       newconf.value[i] = model.value[i]
