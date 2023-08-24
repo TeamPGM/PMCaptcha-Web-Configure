@@ -67,7 +67,7 @@
                   <n-form-item-gi :span="4" label="主动私聊自动白名单" path="initiative">
                     <n-switch v-model:value="model.initiative" />
                   </n-form-item-gi>
-                  <n-form-item-gi :span="3" label="启用陌生人私聊" path="disable_pm">
+                  <n-form-item-gi :span="3" label="禁止陌生人私聊" path="disable_pm">
                     <n-switch v-model:value="model.disable_pm" />
                   </n-form-item-gi>
                   <n-form-item-gi :span="3" label="验证失败时举报" path="report">
