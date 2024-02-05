@@ -81,6 +81,6 @@ export const defaults = {
     "type": "math",
     "img_captcha": "func",
     "img_captcha_retry": null,
-    "version": "2.29",
+    "version": "2.31",
     "cmd":"pmcaptcha"
 }
